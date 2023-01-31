@@ -27,8 +27,7 @@ while True:
     count += 1
 
     try:
-        next_button = scraper.find_element(By.LINK_TEXT, "Next »")
-        scraper.execute_script("arguments[0].scrollIntoView()",next_button)
+        next_button = WebDriverWait(scraper,10).until(EC.element_to_be_clickable((By.XPATH, "//a[@class='next page-numbers']")))
         next_button.click()
     except NoSuchElementException:
         break
